@@ -46,4 +46,5 @@ def create_update(update_directory):
                     dst=update_directory)
 
 
-main()
+if __name__ == "__main__":
+    main()
