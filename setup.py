@@ -9,8 +9,8 @@ setup(
     author='Azurras',
     url='https://github.com/Azurras/backup.git',
     author_email='',
-    keyword=['backup'],
-    entry_pints={'console_scripts': [
+    keywords=['backup'],
+    entry_points={'console_scripts': [
         'backup = backup.__main__:main',
     ],},
 )
