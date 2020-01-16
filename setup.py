@@ -3,7 +3,9 @@
 from setuptools import setup
 
 setup(
-    name='backup',
+    name='backupper',
+    packages=['backupper'],
+    package_dir={'backupper': 'backupper'},
     version='1.0.0',
     description='simple backup script',
     author='Azurras',
@@ -11,6 +13,6 @@ setup(
     author_email='',
     keywords=['backup'],
     entry_points={'console_scripts': [
-        'backup = backup.__main__:main',
-    ],},
+        'backupper = backupper.__main__:main',
+    ], },
 )
