@@ -1,8 +1,9 @@
-#!/user/bin/env python3
+#!/usr/bin/env python3
 
 import Constants
 
 import datetime
+import logging
 import os
 import shutil
 
@@ -34,6 +35,12 @@ def did_backup_today():
             return False
 
 
+def create_backup(backup_directory):
+    shutil.copytree(src=Constants.SRC_FOLDER,
+                    dst=backup_directory,
+                    ignore=logpath)
+
+
 def create_backup_directory():
     backup_directory = Constants.DEST_FOLDER + \
         Constants.NEW_UPDATE_FOLDER + str(datetime.date.today())
@@ -42,9 +49,9 @@ def create_backup_directory():
     return backup_directory
 
 
-def create_backup(backup_directory):
-    shutil.copytree(src=Constants.SRC_FOLDER,
-                    dst=backup_directory)
+def logpath(path, names):
+    logging.info('Working in %s' % path)
+    return []
 
 
 if __name__ == "__main__":
