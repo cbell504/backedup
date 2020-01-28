@@ -1,21 +1,23 @@
-#!/user/bin/env python3
+#!/usr/bin/env python3
 
-import Constants
+from backedup import Constants
 
 import datetime
+import logging
 import os
 import shutil
 
 
 def main():
-    create_backupper_folder()
+    logging.basicConfig(filename='backedup.log', level=logging.INFO)
+    create_backedup_folder()
     if(not did_backup_today()):
         backup_directory = create_backup_directory()
         create_backup(backup_directory)
         print(Constants.DONE)
 
 
-def create_backupper_folder():
+def create_backedup_folder():
     if(os.path.isdir(Constants.DEST_FOLDER)):
         print(Constants.FOLDER_EXIST)
         return True
@@ -34,6 +36,12 @@ def did_backup_today():
             return False
 
 
+def create_backup(backup_directory):
+    shutil.copytree(src=Constants.SRC_FOLDER,
+                    dst=backup_directory,
+                    ignore=_logpath)
+
+
 def create_backup_directory():
     backup_directory = Constants.DEST_FOLDER + \
         Constants.NEW_UPDATE_FOLDER + str(datetime.date.today())
@@ -42,9 +50,9 @@ def create_backup_directory():
     return backup_directory
 
 
-def create_backup(backup_directory):
-    shutil.copytree(src=Constants.SRC_FOLDER,
-                    dst=backup_directory)
+def _logpath(path, names):
+    logging.info('Copying %s' % path)
+    return []
 
 
 if __name__ == "__main__":
