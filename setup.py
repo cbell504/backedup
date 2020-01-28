@@ -3,16 +3,16 @@
 from setuptools import setup
 
 setup(
-    name='backupper',
-    packages=['backupper'],
-    package_dir={'backupper': 'backupper'},
+    name='backedup',
+    packages=['backedup'],
+    package_dir={'backedup': 'backedup'},
     version='1.0.0',
-    description='simple backup script',
+    description='A simple backup script',
     author='Azurras',
-    url='https://github.com/Azurras/backup.git',
+    url='https://github.com/Azurras/backedup.git',
     author_email='',
-    keywords=['backup'],
+    keywords=['backedup'],
     entry_points={'console_scripts': [
-        'backupper = backupper.__main__:main',
+        'backedup = backedup.__main__:main',
     ], },
 )
