@@ -11,14 +11,14 @@ import shutil
 def main():
     logging.basicConfig(filename='backedup.log', level=logging.INFO)
     create_backedup_folder()
-    if(not did_backup_today()):
+    if not did_backup_today():
         backup_directory = create_backup_directory()
         create_backup(backup_directory)
         print(Constants.DONE)
 
 
 def create_backedup_folder():
-    if(os.path.isdir(Constants.DEST_FOLDER)):
+    if os.path.isdir(Constants.DEST_FOLDER):
         print(Constants.FOLDER_EXIST)
         return True
     else:
@@ -28,7 +28,7 @@ def create_backedup_folder():
 def did_backup_today():
     dest_folder_list = os.listdir(Constants.DEST_FOLDER)
     for folder in dest_folder_list:
-        if(str(datetime.date.today()) in folder):
+        if str(datetime.date.today()) in folder:
             print(Constants.OUTPUT_FOLDER_EXIST)
             return True
         else:
@@ -45,7 +45,7 @@ def create_backup(backup_directory):
 def create_backup_directory():
     backup_directory = Constants.DEST_FOLDER + \
         Constants.NEW_UPDATE_FOLDER + str(datetime.date.today())
-    if(os.path.isdir(backup_directory)):
+    if os.path.isdir(backup_directory):
         print(Constants.OUTPUT_FOLDER_EXIST)
     return backup_directory
 
